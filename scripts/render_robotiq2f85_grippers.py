@@ -32,4 +32,4 @@ bpy.context.scene.render.engine = "CYCLES"
 bpy.context.scene.render.resolution_x = 1200
 bpy.context.scene.render.resolution_y = 300
 
-# TODO add aviation_museum_hill HDR from Poly Haven in 8K
+# TODO add aviation_museum_hill HDRI from Poly Haven in 8K

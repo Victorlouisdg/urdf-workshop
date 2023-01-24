@@ -35,4 +35,4 @@ bpy.context.scene.render.engine = "CYCLES"
 bpy.context.scene.render.resolution_x = 1200
 bpy.context.scene.render.resolution_y = 400
 
-# TODO: set up the belfast_sunset_puresky HDR from Poly Haven
+# TODO: set up the belfast_sunset_puresky HDRI from Poly Haven
