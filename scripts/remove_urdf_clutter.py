@@ -3,26 +3,21 @@ import xmltodict
 import json
 import os
 
-def read_urdf_as_dictionary(urdf_path: str):
+def read_urdf(urdf_path: str) -> dict:
     with open(urdf_path, "r") as file:
         xml_content = file.read()
-    urdf_dict = xmltodict.parse(xml_content)
-    return urdf_dict
-
-# def write_dictionary_as_urdf(urdf_dict: dict, urdf_path: str):
-#     xml = xmltodict.unparse(urdf_dict, pretty=True)
-#     with open(urdf_path, "w") as file:
-#         file.write(xml)
+    urdf = xmltodict.parse(xml_content)
+    return urdf
 
 @click.command()
 @click.argument("urdf_path", type=str)
 # @click.option("--remove", type=str, help="String to remove from the filepaths in the URDF.")
 def remove_urdf_clutter(urdf_path: str, remove: str = None):
-    urdf_dict = read_urdf_as_dictionary(urdf_path)
+    urdf = read_urdf(urdf_path)
 
     # Removing the tags I currently consider clutter
-    robot = urdf_dict["robot"]
-    urdf_dict["robot"] = {k: v for k, v in robot.items() if k in ["@name", "link", "joint"]}
+    robot = urdf["robot"]
+    urdf["robot"] = {k: v for k, v in robot.items() if k in ["@name", "link", "joint"]}
 
     links = robot["link"]
     for i, link in enumerate(links):
@@ -32,7 +27,7 @@ def remove_urdf_clutter(urdf_path: str, remove: str = None):
     for i, joint in enumerate(joints):
         joints[i] = {k: v for k, v in joint.items() if k != "dyanmics"}
 
-    xml = xmltodict.unparse(urdf_dict, pretty=True, short_empty_elements=True)
+    xml = xmltodict.unparse(urdf, pretty=True, short_empty_elements=True)
     # xml = xml.replace(remove, "")
         
     # Saving the new URDF
