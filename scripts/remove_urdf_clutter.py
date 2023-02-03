@@ -25,7 +25,7 @@ def remove_urdf_clutter(urdf_path: str, remove: str = None):
 
     joints = robot["joint"]
     for i, joint in enumerate(joints):
-        joints[i] = {k: v for k, v in joint.items() if k != "dyanmics"}
+        joints[i] = {k: v for k, v in joint.items() if k != "dynamics"}
 
     xml = xmltodict.unparse(urdf, pretty=True, short_empty_elements=True)
     # xml = xml.replace(remove, "")
