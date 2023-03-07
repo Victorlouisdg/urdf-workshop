@@ -10,6 +10,7 @@ urdf_path = os.path.abspath(f"{urdf_workshop_path}/universal_robots/ros/ur5e/ur5
 free_joint_empties, _, ur_link_empties = ab.import_urdf(urdf_path)
 
 # Pose the robot
+free_joint_empties["shoulder_pan_joint"].rotation_euler.z = np.deg2rad(180)
 free_joint_empties["shoulder_lift_joint"].rotation_euler.z = np.deg2rad(-151)
 free_joint_empties["elbow_joint"].rotation_euler.z = np.deg2rad(-17.7)
 free_joint_empties["wrist_1_joint"].rotation_euler.z = np.deg2rad(-53)

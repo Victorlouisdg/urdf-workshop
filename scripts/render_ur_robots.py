@@ -15,6 +15,7 @@ for i, ur_robot in enumerate(ur_robots):
     base.location = (-i, 0, 0)
 
     # Pose the robot
+    free_joint_empties["shoulder_pan_joint"].rotation_euler.z = np.deg2rad(180)
     free_joint_empties["shoulder_lift_joint"].rotation_euler.z = np.deg2rad(-45)
     free_joint_empties["elbow_joint"].rotation_euler.z = np.deg2rad(-90)
     free_joint_empties["wrist_1_joint"].rotation_euler.z = np.deg2rad(-45)
