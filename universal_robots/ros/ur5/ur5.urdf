@@ -77,9 +77,7 @@
 			</material>
 		</visual>
 	</link>
-	<link name="base" />
 	<link name="flange" />
-	<link name="tool0" />
 	<joint name="shoulder_pan_joint" type="revolute">
 		<parent link="base_link" />
 		<child link="shoulder_link" />
@@ -135,19 +133,8 @@
 			velocity="3.141592653589793" />
 		<dynamics damping="0" friction="0" />
 	</joint>
-	<joint name="base_link-base_fixed_joint" type="fixed">
-		<origin rpy="0 0 3.141592653589793" xyz="0 0 0" />
-		<parent link="base_link" />
-		<child link="base" />
-	</joint>
 	<joint name="wrist_3-flange" type="fixed">
 		<parent link="wrist_3_link" />
 		<child link="flange" />
-		<origin rpy="0 -1.5707963267948966 -1.5707963267948966" xyz="0 0 0" />
-	</joint>
-	<joint name="flange-tool0" type="fixed">
-		<origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0 0 0" />
-		<parent link="flange" />
-		<child link="tool0" />
 	</joint>
 </robot>
