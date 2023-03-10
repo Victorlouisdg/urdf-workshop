@@ -18,10 +18,10 @@ free_joint_empties["wrist_2_joint"].rotation_euler.z = np.deg2rad(76)
 free_joint_empties["wrist_3_joint"].rotation_euler.z = np.deg2rad(-7)
 
 # Get the tool link
-ur_tool_link = ur_link_empties["tool0"]
+ur_tool_link = ur_link_empties["wrist_3_link"]
 
 # Import the Robotiq 2F-85 gripper
-urdf_path = os.path.abspath(f"{urdf_workshop_path}/robotiq/robotiq_2f85_danfoa/robotiq_2f85_v3.urdf")
+urdf_path = os.path.abspath(f"{urdf_workshop_path}/robotiq/robotiq_2f85_aprice/robotiq_2f85_v3.urdf")
 free_joint_empties, _, link_empties = ab.import_urdf(urdf_path)
 base_links = [link for link in link_empties.values() if link.parent is None]
 
