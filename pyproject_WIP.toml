@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "urdf-workshop"
+dynamic = ["version"]
+authors = [
+  { name="Victor-Louis De Gusseme", email="victorlouisdg@gmail.com" },
+]
+description = "A package with simple URDFs files. "
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Victorlouisdg/urdf-workshop"
+"Bug Tracker" = "https://github.com/Victorlouisdg/urdf-workshop/issues"
+
+[tool.setuptools_scm]
+
+[tool.setuptools.packages.find]
+where = ["urdf_workshop"]
