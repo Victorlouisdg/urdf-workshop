@@ -1,6 +1,5 @@
 import click
 import xmltodict
-import json
 import os
 
 def read_urdf(urdf_path: str) -> dict:

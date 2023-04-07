@@ -1,13 +1,10 @@
-import os
 import airo_blender as ab
 import bpy
 import numpy as np
+import urdf_workshop
 
-script_path = os.path.realpath(__file__)
-urdf_workshop_path = os.path.dirname(os.path.dirname(script_path))
 
-urdf_path = os.path.abspath(f"{urdf_workshop_path}/universal_robots/ros/ur5e/ur5e.urdf")
-free_joint_empties, _, ur_link_empties = ab.import_urdf(urdf_path)
+free_joint_empties, _, ur_link_empties = ab.import_urdf(urdf_workshop.ur5e)
 
 # Pose the robot
 free_joint_empties["shoulder_pan_joint"].rotation_euler.z = np.deg2rad(180)
@@ -21,8 +18,7 @@ free_joint_empties["wrist_3_joint"].rotation_euler.z = np.deg2rad(-7)
 ur_tool_link = ur_link_empties["wrist_3_link"]
 
 # Import the Robotiq 2F-85 gripper
-urdf_path = os.path.abspath(f"{urdf_workshop_path}/robotiq/robotiq_2f85_aprice/robotiq_2f85_v3.urdf")
-free_joint_empties, _, link_empties = ab.import_urdf(urdf_path)
+free_joint_empties, _, link_empties = ab.import_urdf(urdf_workshop.robotiq_2f85)
 base_links = [link for link in link_empties.values() if link.parent is None]
 
 free_joint_empties["finger_joint"].rotation_euler.z = np.deg2rad(15)

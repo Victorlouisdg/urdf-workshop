@@ -1,15 +1,18 @@
 import bpy
 import airo_blender as ab
 import numpy as np
-import os
+import urdf_workshop
 
-ur_robots = ["ur3", "ur5", "ur10", "ur3e", "ur5e", "ur10e"]
-for i, ur_robot in enumerate(ur_robots):
-    script_path = os.path.realpath(__file__)
-    urdf_workshop_path = os.path.dirname(os.path.dirname(script_path))
-    urdf_path = os.path.abspath(f"{urdf_workshop_path}/universal_robots/ros/{ur_robot}/{ur_robot}.urdf")
-
-    free_joint_empties, _, link_empties = ab.import_urdf(urdf_path)
+ur_urdfs = [
+    urdf_workshop.ur3,
+    urdf_workshop.ur3e,
+    urdf_workshop.ur5,
+    urdf_workshop.ur5e,
+    urdf_workshop.ur10,
+    urdf_workshop.ur10e,
+]
+for i, urdf in enumerate(ur_urdfs):
+    free_joint_empties, _, link_empties = ab.import_urdf(urdf)
     base_links = [link for link in link_empties.values() if link.parent is None]
     base = base_links[0]  # We know the UR models have only one base link
     base.location = (-i, 0, 0)
